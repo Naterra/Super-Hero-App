@@ -5,7 +5,7 @@ class Layout extends Component {
 		return (
 				<nav>
 					<div className="nav-wrapper teal lighten-2">
-						<a href="#" className="brand-logo">
+						<a href="/" className="brand-logo">
 							Super Hero
 						</a>
 					</div>
