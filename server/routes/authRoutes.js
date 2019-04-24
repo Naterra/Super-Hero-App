@@ -33,19 +33,6 @@ router.post('/verifyToken', (req, res) => {
         // console.log("response", json.response);
         // console.log("json", json);
 
-        if(json.response === "success"){
-            console.log("Save token in cookie", token);
-
-            cookies.set("token", token, {
-                path: "/",
-                expires: cookieTime(),
-                // httpOnly:true
-            });
-        }
-
-
-
-
         // console.log(json);
         res.send({response:json.response});
     });
@@ -53,10 +40,6 @@ router.post('/verifyToken', (req, res) => {
 });
 
 
-const cookieTime = () => {
-    let date = new Date();
-    date.setDate(date.getDate() + 1);
-    return date;
-};
+
 
 module.exports = router;

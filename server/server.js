@@ -3,29 +3,26 @@ const path = require('path');
 const bodyParser = require('body-parser');
 // const cookieSession = require('cookie-session');
 
+// Swagger
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('../swagger.json');
+
 const app = express();
 app.set('port', process.env.PORT || 5000);
 
 
+// Static
 app.use(express.static(path.join(__dirname, 'build')));
-
-//Set cookie
-// app.use(
-//     cookieSession({
-//         maxAge: 30 * 24 * 60 * 60 * 1000,
-//         keys: ['jdhfv']
-//     })
-// );
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-// app.use(bodyParser.json({ type: 'application/*+json' }))
+
 
 // Routers
 const api_routes =require('./routes/api');
 const auth_routes =require('./routes/authRoutes');
 
-
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.get('/*', function (req, res, next) {
     // res.sendFile(path.join(__dirname,'index.html'));
     // console.log('req', req);

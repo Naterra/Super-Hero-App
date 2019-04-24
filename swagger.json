@@ -1,0 +1,132 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "This is a simple API",
+    "version" : "1.0.0",
+    "title" : "Super Hero API",
+    "contact" : {
+      "email" : "natalinyweb@hotmail.com"
+    },
+    "license" : {
+      "name" : "MIT"
+    }
+  },
+  "host" : "localhost:5000/api/",
+  "basePath" : "/",
+  "tags" : [
+    { "name" : "characters", "description" : ""}
+  ],
+  "schemes" : [ "http" ],
+  "paths" : {
+    "characters": {
+      "get": {
+        "tags" : [ "characters" ],
+        "summary" : "searches characters",
+        "description" : "By passing in the appropriate options, you can search for specified characters",
+        "produces" : [ "application/json" ],
+        "parameters" : [
+          {
+            "name" : "alignment",
+            "in" : "query",
+            "description" : "pass an optional search string for looking up specified characters",
+            "required" : false,
+            "type" : "string"
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "description" : "search results matching criteria",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/CharacterItem"
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad request"
+          }
+        }
+      }
+    },
+    "character": {
+      "get": {
+        "tags" : [ "characters" ],
+        "summary" : "searches for particular character",
+        "description" : "By passing in the appropriate options, you can search for specified characters",
+        "produces" : [ "application/json" ],
+        "parameters" : [
+          {
+            "name" : "alignment",
+            "in" : "query",
+            "description" : "pass an optional search string for looking up specified characters",
+            "required" : false,
+            "type" : "string"
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "description" : "search results matching criteria",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/CharacterItem"
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad request"
+          }
+        }
+      }
+    },
+    "search": {
+      "get": {
+        "tags" : [ "characters" ],
+        "summary" : "searches characters",
+        "description" : "By passing in the appropriate options, you can search for specified characters",
+        "produces" : [ "application/json" ],
+        "parameters" : [
+          {
+            "name" : "name",
+            "in" : "query",
+            "description" : "Search by Character Name",
+            "required" : false,
+            "type" : "string"
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "description" : "search results matching criteria",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/CharacterItem"
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad request"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "CharacterItem" : {
+      "type" : "object",
+      "required" : [ "id" ],
+      "properties" : {
+        "id" : {
+          "type" : "string",
+          "format" : "uuid",
+          "example" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+        },
+        "name" : {
+          "type" : "string",
+          "example" : "Widget Adapter"
+        }
+      }
+    }
+  }
+}
