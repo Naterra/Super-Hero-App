@@ -6,6 +6,7 @@ import 'materialize-css/dist/css/materialize.min.css';
 /**  Components  **/
 import Layout from '../components/Layout';
 import AuthComponent from '../components/AuthComponent';
+import ComparisonView from '../components/ComparisonView';
 
 /**  Actions  **/
 import { getUserToken } from '../store/actions';
@@ -37,20 +38,21 @@ class App extends Component {
 		return (
 			<Layout>
 				{!isAuthorized && (<div>
-					<h4>erf Welcome to Super Hero Command Center!</h4>
+					<h4>Welcome to Super Hero Command Center!</h4>
 
 					<div style={{ marginTop: '100px' }}>
 						<AuthComponent {...this.props} />
 					</div>
 				</div>)}
 
-				{isAuthorized && (<div>
-					hello user
-				</div>)}
+				{isAuthorized && (<ComparisonView />)}
+
 
 			</Layout>
 		);
 	}
 }
+
+
 
 export default App;
