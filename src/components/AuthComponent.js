@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
 
 /**  Actions  **/
 import { authenticate } from '../store/actions';
+
+/**  Components  **/
+import PreloaderSpinner from './PreloaderSpinner';
 
 class AuthComponent extends Component {
 	constructor() {
@@ -21,17 +23,13 @@ class AuthComponent extends Component {
 		const input = this.tokenRef.current;
 		const token = input.value;
 
-
-		this.setState({ loading: true });
-        this.setState({ err: false });
+		this.setState({ loading: true, err: false });
 
 		authenticate(token)
 			.then(res => {
-				console.warn('SUCCESS');
-
+				this.props.authorizedCallback();
 			})
 			.catch(err => {
-				console.warn('NOT SUCCESS');
 				this.setState({ err: 'Not Authorized' });
 			})
 			.finally(() => {
@@ -42,7 +40,6 @@ class AuthComponent extends Component {
 	render() {
 		const { err, loading } = this.state;
 
-
 		return (
 			<div className="row">
 				<div className="card">
@@ -50,7 +47,7 @@ class AuthComponent extends Component {
 						Please, Log In
 					</div>
 					<div className="card-content row">
-						<div className="col s1">{loading && <Preloader />}</div>
+						<div className="col s1">{loading && <PreloaderSpinner />}</div>
 						<div className="center col s10 offset-s1">
 							<div className="input-field col m8 s12">
 								<input ref={this.tokenRef} id="password" type="password" className="validate" />
@@ -75,23 +72,5 @@ class AuthComponent extends Component {
 		);
 	}
 }
-
-const Preloader = () => {
-	return (
-		<div className="preloader-wrapper active">
-			<div className="spinner-layer spinner-blue-only">
-				<div className="circle-clipper left">
-					<div className="circle" />
-				</div>
-				<div className="gap-patch">
-					<div className="circle" />
-				</div>
-				<div className="circle-clipper right">
-					<div className="circle" />
-				</div>
-			</div>
-		</div>
-	);
-};
 
 export default AuthComponent;

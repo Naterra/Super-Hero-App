@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-
+// Assets
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize';
 import './App.css';
@@ -14,47 +14,43 @@ import ComparisonView from '../components/ComparisonView';
 import { getUserToken } from '../store/actions';
 
 class App extends Component {
-	constructor(){
+	constructor() {
 		super();
 
-		this.state={
-			isAuthorized:null
+		this.state = {
+			isAuthorized: null
+		};
+
+		this.authorizedCallback = this.authorizedCallback.bind(this);
+	}
+	async componentDidMount() {
+		const userToken = await getUserToken();
+		if (userToken) {
+			this.setState({ isAuthorized: true });
 		}
 	}
-	async componentDidMount(){
-		const userToken = await getUserToken();
-		console.log("userToken", userToken);
-		if(userToken){
-			this.setState({isAuthorized:true});
-		}
-		// const isAuthorized =  userToken.token ? true:false;
-
-
+	authorizedCallback() {
+		this.setState({ isAuthorized: true });
 	}
 	render() {
-		const {isAuthorized} = this.state;
-		console.log("App render", this.state);
-		console.log("isAuthorized", isAuthorized);
-
+		const { isAuthorized } = this.state;
 
 		return (
 			<Layout>
-				{!isAuthorized && (<div>
-					<h4>Welcome to Super Hero Command Center!</h4>
+				{!isAuthorized && (
+					<div className="row">
+						<h4 className="center">Welcome to Super Hero Command Center!</h4>
 
-					<div style={{ marginTop: '100px' }}>
-						<AuthComponent {...this.props} />
+						<div className="col s6 offset-s3">
+							<AuthComponent authorizedCallback={this.authorizedCallback} {...this.props} />
+						</div>
 					</div>
-				</div>)}
+				)}
 
-				{isAuthorized && (<ComparisonView />)}
-
-
+				{isAuthorized && <ComparisonView />}
 			</Layout>
 		);
 	}
 }
-
-
 
 export default App;

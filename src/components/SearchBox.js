@@ -42,7 +42,6 @@ class SearchBox extends Component {
 			});
 	}
 	onChangeEvent(keyword) {
-		console.warn('search input changed', keyword);
 		const { typingTimeout } = this.state;
 
 		if (typingTimeout) {
@@ -50,7 +49,6 @@ class SearchBox extends Component {
 		}
 
 		this.setState({
-			// keyword: keyword,
 			typingTimeout: setTimeout(() => {
 				if (keyword) {
 					this.fetchData(keyword);

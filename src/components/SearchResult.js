@@ -16,7 +16,6 @@ class SearchResult extends Component {
 		} else {
 			setVillain(record);
 		}
-		console.warn('onClickEvent', record);
 	}
 	recordsBlock() {
 		const { records } = this.props;
