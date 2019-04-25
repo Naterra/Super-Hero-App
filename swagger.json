@@ -11,7 +11,7 @@
       "name" : "MIT"
     }
   },
-  "host" : "localhost:5000/api/",
+  "host" : "super-hero.space/api/",
   "basePath" : "/",
   "tags" : [
     { "name" : "characters", "description" : ""}
@@ -22,20 +22,12 @@
       "get": {
         "tags" : [ "characters" ],
         "summary" : "searches characters",
-        "description" : "By passing in the appropriate options, you can search for specified characters",
+        "description" : "Characters List",
         "produces" : [ "application/json" ],
-        "parameters" : [
-          {
-            "name" : "alignment",
-            "in" : "query",
-            "description" : "pass an optional search string for looking up specified characters",
-            "required" : false,
-            "type" : "string"
-          }
-        ],
+        "parameters" : [],
         "responses" : {
           "200" : {
-            "description" : "search results matching criteria",
+            "description" : "successful operation",
             "schema" : {
               "type" : "array",
               "items" : {
@@ -49,7 +41,7 @@
         }
       }
     },
-    "character": {
+    "character/{id}": {
       "get": {
         "tags" : [ "characters" ],
         "summary" : "searches for particular character",
@@ -57,16 +49,16 @@
         "produces" : [ "application/json" ],
         "parameters" : [
           {
-            "name" : "alignment",
-            "in" : "query",
-            "description" : "pass an optional search string for looking up specified characters",
-            "required" : false,
-            "type" : "string"
+            "name" : "id",
+            "in" : "path",
+            "description" : "character id",
+            "required" : true,
+            "type" : "integer"
           }
         ],
         "responses" : {
           "200" : {
-            "description" : "search results matching criteria",
+            "description" : "successful operation",
             "schema" : {
               "type" : "array",
               "items" : {
@@ -97,7 +89,7 @@
         ],
         "responses" : {
           "200" : {
-            "description" : "search results matching criteria",
+            "description" : "successful operation",
             "schema" : {
               "type" : "array",
               "items" : {
@@ -118,13 +110,12 @@
       "required" : [ "id" ],
       "properties" : {
         "id" : {
-          "type" : "string",
-          "format" : "uuid",
-          "example" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+          "type" : "integer",
+          "format" : "int64"
         },
         "name" : {
           "type" : "string",
-          "example" : "Widget Adapter"
+          "example" : "Emma Frost"
         }
       }
     }
