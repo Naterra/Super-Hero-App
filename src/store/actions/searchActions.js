@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as types from '../types';
 
-export const resetSearchResult = () =>dispatch=>{
+export const resetSearchResult = () => dispatch => {
 	dispatch({ type: types.RESET_SEARCH_RESULT });
 };
 
