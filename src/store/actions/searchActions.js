@@ -9,12 +9,10 @@ export const searchByName = name => dispatch => {
 	return axios
 		.get(`/api/search?name=${name}`)
 		.then(async res => {
-			// console.log('searchByName  then', res.data);
 			const records = res.data.results;
 
 			let rec = [];
 			for (let item of records) {
-				// console.log('item', item.name);
 				let validImg = await validateImg(item.image.url);
 				if (!validImg && validImg.status !== 200) item.image.url = '/img/default-avatar.jpg';
 				rec.push(item);
@@ -24,7 +22,6 @@ export const searchByName = name => dispatch => {
 			return res;
 		})
 		.catch(err => {
-			// console.error('searchByName catch', err);
 			return err;
 		});
 };
