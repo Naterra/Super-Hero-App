@@ -4,7 +4,7 @@ class Layout extends Component {
 	render() {
 		return (
 				<nav>
-					<div className="nav-wrapper teal lighten-2">
+					<div className="nav-wrapper" style={{backgroundColor:"#17446b"}}>
 						<a href="/" className="brand-logo">
 							Super Hero
 						</a>

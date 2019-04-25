@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
-import './App.css';
+
 import 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/js/materialize';
+import './App.css';
 
 /**  Components  **/
 import Layout from '../components/Layout';
