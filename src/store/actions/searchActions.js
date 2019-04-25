@@ -1,6 +1,10 @@
 import axios from 'axios';
 import * as types from '../types';
 
+export const resetSearchResult = () =>dispatch=>{
+	dispatch({ type: types.RESET_SEARCH_RESULT });
+};
+
 export const searchByName = name => dispatch => {
 	return axios
 		.get(`/api/search?name=${name}`)
@@ -10,13 +14,14 @@ export const searchByName = name => dispatch => {
 
 			let rec = [];
 			for (let item of records) {
-				console.log('item', item.name);
+				// console.log('item', item.name);
 				let validImg = await validateImg(item.image.url);
 				if (!validImg && validImg.status !== 200) item.image.url = '/img/default-avatar.jpg';
 				rec.push(item);
 			}
 
 			dispatch({ type: types.SET_SEARCH_RESULT, payload: rec });
+			return res;
 		})
 		.catch(err => {
 			// console.error('searchByName catch', err);
