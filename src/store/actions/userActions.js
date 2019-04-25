@@ -5,14 +5,13 @@ const cookies = new Cookies();
 
 export const verifyToken = token => {
 	return axios
-		.post(`http://localhost:5000/auth/verifyToken`, { token })
+		.post(`/auth/verifyToken`, { token })
 		.then(res => {
 			if (res.data.response === 'success') {
 				cookies.set('token', token, {
 					path: '/',
 					expires: cookieTime()
 				});
-
 				return true;
 			} else {
 				return false;
