@@ -1,17 +1,21 @@
 {
   "name": "super-hero",
   "version": "0.1.0",
-  "proxy": "http://localhost:5000",
+  "proxy": "http://localhost:5005",
+  "homepage": "/",
   "dependencies": {
     "async": "^2.6.2",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "concurrently": "^4.1.0",
+    "cookie-parser": "^1.4.4",
     "cookie-session": "^1.3.3",
     "express": "^4.16.4",
     "isomorphic-fetch": "^2.2.1",
     "materialize-css": "^1.0.0",
+    "mongoose": "^5.5.3",
     "nodemon": "^1.18.11",
+    "path": "^0.12.7",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.2",
@@ -24,12 +28,12 @@
     "universal-cookie": "^3.1.0"
   },
   "scripts": {
-    "dev": "concurrently \"npm run server\" \"react-scripts start\" ",
-    "server": "nodemon server/server.js",
-    "start": "react-scripts start",
+    "dev": "concurrently \"npm run dev-server\" \"react-scripts start\" ",
+    "dev-server": "nodemon server/server.js",
+    "server": "node server/server.js",
+    "start": "NODE_ENV=production node server/server.js",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build:pm2": "NODE_ENV=production react-scripts build && pm2 restart super-hero"
   },
   "eslintConfig": {
     "extends": "react-app"
