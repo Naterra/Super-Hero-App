@@ -22,7 +22,7 @@ class Tabs extends React.Component {
 					<ul id={id} ref={this.tabRef} className="tabs tabs-fixed-width">
 						{menuList.map((item, i) => {
 							return (
-								<li className="tab ">
+								<li key={i} className="tab">
 									<a className={i == 0 ? 'active' : ''} href={`#tab${id}-${i + 1}`}>
 										{item}
 									</a>
