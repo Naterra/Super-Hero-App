@@ -21,11 +21,11 @@ class ComparisonView extends Component {
 
 		return (
 			<div className="row">
-				<div className="col m4">
+				<div className="col s4">
 					<CharacterProfile mode="hero" {...this.props} />
 				</div>
 
-				<div className="col m4">
+				<div className="col s4 search">
 					<h1 className="center">VS</h1>
 					<h5 className="center">Select Character</h5>
 					{!comparisonView.selectedAlignment && !comparisonView.villain && <p className="center teal-text">Please, select hero or villain</p>}
@@ -33,7 +33,7 @@ class ComparisonView extends Component {
 					<SearchResult records={searchResultData} {...this.props} />
 				</div>
 
-				<div className="col m4">
+				<div className="col s4">
 					<CharacterProfile mode="villain" {...this.props} />
 				</div>
 			</div>

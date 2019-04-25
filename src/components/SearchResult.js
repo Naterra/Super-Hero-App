@@ -49,12 +49,12 @@ const SearchResultItem = props => {
 	const avgPow = getAvgPower(data.powerstats);
 
 	return (
-		<div className="card horizontal" onClick={e => onClickEvent(data)}>
+		<div className="search-res-item card horizontal" onClick={e => onClickEvent(data)}>
 			<div className="card-image">
-				<img className="responsive-img" src={data.image.url} style={{ height: '90px' }} />
+				<img className="responsive-img" src={data.image.url} />
 			</div>
 			<div className="horisontal-card-content">
-				<div>{data.name}</div>
+				<div className="character-name blue-text text-darken-2">{data.name}</div>
 				<div>Average power:{avgPow}</div>
 			</div>
 		</div>

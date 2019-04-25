@@ -50,6 +50,16 @@
 .profile-card .no-data-val {
 	color: gray;
 }
+.search-res-item img{
+  height: 90px;
+}
+.search-res-item .character-name{
+  font-weight: bold;
+}
+nav{
+  background-color: #1967ad;
+  padding: 0 5%;
+}
 .tabs .tab a {
 	padding: 0 6px;
 	font-size: 12px;
@@ -62,4 +72,17 @@
 	to {
 		transform: rotate(360deg);
 	}
+}
+
+@media (max-width: 600px) {
+  .box-1  {
+    flex-flow: column-reverse;
+  }
+  .search-res-item img {
+    height: 60px;
+  }
+  .search-res-item .horisontal-card-content{
+    font-size:11px;
+  }
+
 }

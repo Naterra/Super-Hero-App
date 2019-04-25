@@ -5,18 +5,17 @@ import Tabs from './Tabs';
 
 /**  Utils  **/
 import { getProfileExistingArrayVal, isEmptyProfileData } from '../utils';
-import {getAvgPower} from "../store/actions";
+import { getAvgPower } from '../store/actions';
 
 const ProfileInfoView = props => {
 	const { data } = props;
 	const tabId = data.id;
-    // const avgPow = getAvgPower(data.powerstats);
-    const avgPow = getAvgPower(data.powerstats);
+	const avgPow = getAvgPower(data.powerstats);
 
 	return (
 		<div>
-			<h5 className="blue-text text-darken-2 center">{data.name}</h5>
-            <div className="center">Average power:{avgPow}</div>
+			<h5 className="blue-text text-darken-3 center">{data.name}</h5>
+			<div className="center">Average power:{avgPow}</div>
 
 			<Tabs id={tabId} menuList={['Pow', 'Bio', 'Appearance', 'Work', 'Connections']}>
 				<div id={`tab${tabId}-1`} className="col s12">
